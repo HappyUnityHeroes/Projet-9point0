@@ -20,7 +20,9 @@ const ROUTE_TIER_MAP: Record<string, Tier> = {
 }
 
 export function getRequiredTierForRoute(pathname: string): Tier | null {
-  for (const [route, tier] of Object.entries(ROUTE_TIER_MAP)) {
+  // Sort routes by length descending so more specific routes match first
+  const sorted = Object.entries(ROUTE_TIER_MAP).sort((a, b) => b[0].length - a[0].length)
+  for (const [route, tier] of sorted) {
     if (pathname.startsWith(route)) {
       return tier
     }
