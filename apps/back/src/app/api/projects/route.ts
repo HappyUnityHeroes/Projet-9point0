@@ -1,0 +1,39 @@
+import { createSupabaseServer } from '@/lib/supabase-server'
+import { NextResponse } from 'next/server'
+
+export async function GET() {
+  const supabase = await createSupabaseServer()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) return NextResponse.json({ error: 'Non authentifié' }, { status: 401 })
+
+  const { data, error } = await supabase
+    .from('projects')
+    .select('*')
+    .eq('user_id', user.id)
+    .order('created_at', { ascending: false })
+
+  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  return NextResponse.json(data)
+}
+
+export async function POST(request: Request) {
+  const supabase = await createSupabaseServer()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) return NextResponse.json({ error: 'Non authentifié' }, { status: 401 })
+
+  const body = await request.json()
+  const { type, config } = body
+
+  const { data, error } = await supabase
+    .from('projects')
+    .insert({
+      user_id: user.id,
+      type: type || 'site',
+      config: config || {},
+    })
+    .select()
+    .single()
+
+  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  return NextResponse.json(data)
+}
