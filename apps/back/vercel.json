@@ -1,0 +1,5 @@
+{
+  "installCommand": "cd ../.. && npm install",
+  "buildCommand": "cd ../.. && npx turbo build --filter=@9point0/back",
+  "framework": "nextjs"
+}
