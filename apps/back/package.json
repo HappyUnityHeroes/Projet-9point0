@@ -1,0 +1,38 @@
+{
+  "name": "@9point0/back",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start -p 3001",
+    "lint": "next lint",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@9point0/ui": "*",
+    "@9point0/db": "*",
+    "@9point0/ai": "*",
+    "@9point0/billing": "*",
+    "@supabase/supabase-js": "^2.45.0",
+    "@supabase/ssr": "^0.5.0",
+    "next": "^14.2.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "@tiptap/react": "^2.9.0",
+    "@tiptap/starter-kit": "^2.9.0",
+    "@tiptap/extension-image": "^2.9.0",
+    "@dnd-kit/core": "^6.1.0",
+    "@dnd-kit/sortable": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.0.0"
+  }
+}
