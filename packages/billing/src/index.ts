@@ -1,2 +1,2 @@
 export { TIERS, SERVICES, ADDONS, COSTS } from './tiers'
-export { stripe, createCheckoutSession, createPortalSession } from './stripe'
+export { getStripe, createCheckoutSession, createPortalSession } from './stripe'
